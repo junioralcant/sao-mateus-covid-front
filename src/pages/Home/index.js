@@ -14,7 +14,7 @@ function Home() {
         <div>
           <h1>SÃO MATEUS </h1>
           <h2>BALANÇO EPIDEMIOLÓGICO</h2>
-          <img src={covid} />
+          <img src={covid} alt="Covid" />
         </div>
       </Info>
 
