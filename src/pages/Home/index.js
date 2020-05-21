@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Container,
@@ -9,9 +9,24 @@ import {
   Footer,
   Body,
 } from "./styles";
-import covid from "../../assets/covid.png";
+
+import api from "../../services/api";
+
+import covidImg from "../../assets/covid.png";
 
 function Home() {
+  const [covid, setCovid] = useState([]);
+
+  useEffect(() => {
+    async function loadDados() {
+      const response = await api.get("/covids");
+
+      setCovid(response.data);
+    }
+
+    loadDados();
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -22,56 +37,60 @@ function Home() {
         <div>
           <h1>SÃO MATEUS </h1>
           <h2>BALANÇO EPIDEMIOLÓGICO</h2>
-          <img src={covid} alt="Covid" />
+          <img src={covidImg} alt="Covid" />
         </div>
       </Info>
 
-      <Body>
-        <Content>
-          <Dados color="#fa0200">
-            <strong>Confirmados</strong>
-            <div>
-              <small>206</small>
-            </div>
-          </Dados>
-          <Dados color="#0B6BFE">
-            <strong>Suspeitos</strong>
-            <div>
-              <small>311</small>
-            </div>
-          </Dados>
-        </Content>
+      {covid.map((cov) => {
+        return (
+          <Body key={cov._id}>
+            <Content>
+              <Dados color="#fa0200">
+                <strong>Confirmados</strong>
+                <div>
+                  <small>{cov.confirmados}</small>
+                </div>
+              </Dados>
+              <Dados color="#0B6BFE">
+                <strong>Suspeitos</strong>
+                <div>
+                  <small>{cov.suspeitos}</small>
+                </div>
+              </Dados>
+            </Content>
 
-        <Content>
-          <Dados color="#FF5900">
-            <strong>Monitorados</strong>
-            <div>
-              <small>451</small>
-            </div>
-          </Dados>
-          <Dados color="#3BB802">
-            <strong>Descartados</strong>
-            <div>
-              <small>78</small>
-            </div>
-          </Dados>
-        </Content>
+            <Content>
+              <Dados color="#FF5900">
+                <strong>Monitorados</strong>
+                <div>
+                  <small>{cov.monitorados}</small>
+                </div>
+              </Dados>
+              <Dados color="#3BB802">
+                <strong>Descartados</strong>
+                <div>
+                  <small>{cov.descartados}</small>
+                </div>
+              </Dados>
+            </Content>
 
-        <Content>
-          <Dados color="#FFB403">
-            <strong>Recuperados</strong>
-            <div>
-              <small>58</small>
-            </div>
-          </Dados>
-          <Dados color="#1D1B18">
-            <strong>Óbitos</strong>
-            <div>
-              <small>09</small>
-            </div>
-          </Dados>
-        </Content>
-      </Body>
+            <Content>
+              <Dados color="#FFB403">
+                <strong>Recuperados</strong>
+                <div>
+                  <small>{cov.recuperados}</small>
+                </div>
+              </Dados>
+              <Dados color="#1D1B18">
+                <strong>Óbitos</strong>
+                <div>
+                  <small>{cov.obitos}</small>
+                </div>
+              </Dados>
+            </Content>
+          </Body>
+        );
+      })}
 
       <Footer>
         <div>
