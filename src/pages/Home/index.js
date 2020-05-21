@@ -8,6 +8,7 @@ import {
   Dados,
   Footer,
   Body,
+  Loader,
 } from "./styles";
 
 import api from "../../services/api";
@@ -41,56 +42,117 @@ function Home() {
         </div>
       </Info>
 
-      {covid.map((cov) => {
-        return (
-          <Body key={cov._id}>
-            <Content>
-              <Dados color="#fa0200">
-                <strong>Confirmados</strong>
-                <div>
-                  <small>{cov.confirmados}</small>
-                </div>
-              </Dados>
-              <Dados color="#0B6BFE">
-                <strong>Suspeitos</strong>
-                <div>
-                  <small>{cov.suspeitos}</small>
-                </div>
-              </Dados>
-            </Content>
+      {covid.length > 0 ? (
+        covid.map((cov) => {
+          return (
+            <Body key={cov._id}>
+              <Content>
+                <Dados color="#fa0200">
+                  <strong>Confirmados</strong>
+                  <div>
+                    <small>{cov.confirmados}</small>
+                  </div>
+                </Dados>
+                <Dados color="#0B6BFE">
+                  <strong>Suspeitos</strong>
+                  <div>
+                    <small>{cov.suspeitos}</small>
+                  </div>
+                </Dados>
+              </Content>
 
-            <Content>
-              <Dados color="#FF5900">
-                <strong>Monitorados</strong>
-                <div>
-                  <small>{cov.monitorados}</small>
-                </div>
-              </Dados>
-              <Dados color="#3BB802">
-                <strong>Descartados</strong>
-                <div>
-                  <small>{cov.descartados}</small>
-                </div>
-              </Dados>
-            </Content>
+              <Content>
+                <Dados color="#FF5900">
+                  <strong>Monitorados</strong>
+                  <div>
+                    <small>{cov.monitorados}</small>
+                  </div>
+                </Dados>
+                <Dados color="#3BB802">
+                  <strong>Descartados</strong>
+                  <div>
+                    <small>{cov.descartados}</small>
+                  </div>
+                </Dados>
+              </Content>
 
-            <Content>
-              <Dados color="#FFB403">
-                <strong>Recuperados</strong>
-                <div>
-                  <small>{cov.recuperados}</small>
-                </div>
-              </Dados>
-              <Dados color="#1D1B18">
-                <strong>Óbitos</strong>
-                <div>
-                  <small>{cov.obitos}</small>
-                </div>
-              </Dados>
-            </Content>
-          </Body>
-        );
-      })}
+              <Content>
+                <Dados color="#FFB403">
+                  <strong>Recuperados</strong>
+                  <div>
+                    <small>{cov.recuperados}</small>
+                  </div>
+                </Dados>
+                <Dados color="#1D1B18">
+                  <strong>Óbitos</strong>
+                  <div>
+                    <small>{cov.obitos}</small>
+                  </div>
+                </Dados>
+              </Content>
+            </Body>
+          );
+        })
+      ) : (
+        <Body>
+          <Content>
+            <Dados color="#fa0200">
+              <strong>Confirmados</strong>
+              <div>
+                <small>
+                  <Loader />
+                </small>
+              </div>
+            </Dados>
+            <Dados color="#0B6BFE">
+              <strong>Suspeitos</strong>
+              <div>
+                <small>
+                  <Loader />
+                </small>
+              </div>
+            </Dados>
+          </Content>
+
+          <Content>
+            <Dados color="#FF5900">
+              <strong>Monitorados</strong>
+              <div>
+                <small>
+                  <Loader />
+                </small>
+              </div>
+            </Dados>
+            <Dados color="#3BB802">
+              <strong>Descartados</strong>
+              <div>
+                <small>
+                  <Loader />
+                </small>
+              </div>
+            </Dados>
+          </Content>
+
+          <Content>
+            <Dados color="#FFB403">
+              <strong>Recuperados</strong>
+              <div>
+                <small>
+                  <Loader />
+                </small>
+              </div>
+            </Dados>
+            <Dados color="#1D1B18">
+              <strong>Óbitos</strong>
+              <div>
+                <small>
+                  <Loader />
+                </small>
+              </div>
+            </Dados>
+          </Content>
+        </Body>
+      )}
 
       <Footer>
         <div>
