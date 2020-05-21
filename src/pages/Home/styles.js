@@ -9,6 +9,7 @@ export const Header = styled.div`
   display: flex;
   background: #0b6bfe;
   width: 50%;
+  max-width: 400px;
   height: 50px;
   align-items: center;
   padding-left: 20px;
@@ -75,12 +76,20 @@ export const Info = styled.div`
   }
 `;
 
+export const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Content = styled.div`
   display: flex;
   padding: 20px;
   width: 100%;
   justify-content: space-between;
   margin-bottom: 15px;
+  max-width: 700px;
 `;
 
 export const Dados = styled.div`
@@ -132,7 +141,7 @@ export const Dados = styled.div`
 export const Footer = styled.div`
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 55px;
   padding: 10px;
   background: #0b6bfe;
 
