@@ -12,6 +12,7 @@
 /build
 
 .env
+switcher_backup.env
 
 # misc
 .DS_Store

@@ -7,7 +7,6 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  background: #0b6bfe;
   width: 50%;
   max-width: 400px;
   height: 50px;
@@ -17,8 +16,18 @@ export const Header = styled.div`
   color: #fff;
   margin-bottom: 20px;
 
+  img {
+    width: 150px;
+    margin-top: 30px;
+  }
+
   @media screen and (max-width: 600px) {
     font-size: 15px;
+    padding-left: 10px;
+
+    img {
+      width: 100px;
+    }
   }
 `;
 

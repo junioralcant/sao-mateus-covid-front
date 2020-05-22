@@ -14,6 +14,7 @@ import {
 import api from "../../services/api";
 
 import covidImg from "../../assets/covid.png";
+import logo from "../../assets/logo.png";
 
 function Home() {
   const [covid, setCovid] = useState([]);
@@ -31,7 +32,7 @@ function Home() {
   return (
     <Container>
       <Header>
-        <h2>LOGOTIPO</h2>
+        <img src={logo} alt="SÃO MATEUS" />
       </Header>
 
       <Info>
