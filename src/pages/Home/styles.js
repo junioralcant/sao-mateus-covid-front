@@ -153,6 +153,7 @@ export const Footer = styled.div`
   height: 55px;
   padding: 10px;
   background: #0b6bfe;
+  font-style: italic;
 
   small {
     color: #fff;
