@@ -69,7 +69,7 @@ function Home() {
                     <small>{cov.monitorados}</small>
                   </div>
                 </Dados>
-                <Dados color="#3BB802">
+                <Dados color="#FFB403">
                   <strong>Descartados</strong>
                   <div>
                     <small>{cov.descartados}</small>
@@ -78,7 +78,7 @@ function Home() {
               </Content>
 
               <Content>
-                <Dados color="#FFB403">
+                <Dados color="#3BB802">
                   <strong>Recuperados</strong>
                   <div>
                     <small>{cov.recuperados}</small>
